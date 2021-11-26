@@ -40,7 +40,7 @@ export const transferOverride = async (payload, original) => {
   };
 
   // initiate the transfer
-  return fetch(`${process.env.SERVERLESS_FUNCTION_DOMAIN}/transfer-chat`, {
+  return fetch("https://plugin-chat-sms-transfer-functions-3985-dev.twil.io/transfer-chat", {
     headers: {
       'Content-Type': 'application/json',
     },
