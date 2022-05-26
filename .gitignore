@@ -68,3 +68,10 @@ appConfig.js
 build/
 .idea
 .twilio-functions
+
+# dotenv environment variables file
+.env
+.env.dev
+.env.stage
+.env.prod
+

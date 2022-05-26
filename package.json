@@ -1,6 +1,6 @@
 {
   "name": "plugin-chat-sms-transfer",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "private": true,
   "description": "The Chat and SMS Transfers for Flex plugin helps contact center administrators set up transferring of Chats and SMS between Agents",
   "scripts": {
@@ -10,10 +10,12 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@twilio/flex-plugin-scripts": "5.0.6",
     "debug": "^4.3.2",
+    "dotenv": "^16.0.1",
+    "dotenv-webpack": "^7.1.0",
     "react": "16.5.2",
     "react-dom": "16.5.2",
-    "@twilio/flex-plugin-scripts": "5.0.6",
     "react-emotion": "9.2.12"
   },
   "devDependencies": {
