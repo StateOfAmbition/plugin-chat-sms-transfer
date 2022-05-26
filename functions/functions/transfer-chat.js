@@ -4,7 +4,7 @@ const JWEValidator = require('twilio-flex-token-validator').functionValidator;
 exports.handler = JWEValidator(async function (context, event, callback) {
   // set up twilio client
   const client = context.getTwilioClient();
-
+  const DEFAULT_TIMEOUT = 1200000;
   // setup a response object
   const response = new Twilio.Response();
   response.appendHeader('Access-Control-Allow-Origin', '*');
@@ -18,8 +18,7 @@ exports.handler = JWEValidator(async function (context, event, callback) {
 
   // parse data form the incoming http request
   const originalTaskSid = event.taskSid;
-  const { targetSid } = event;
-  const { workerName } = event;
+  const { targetSid, workerName, timeout } = event;
 
   // retrieve attributes of the original task
   const originalTask = await client.taskrouter.workspaces(context.TWILIO_WORKSPACE_SID).tasks(originalTaskSid).fetch();
@@ -65,6 +64,7 @@ exports.handler = JWEValidator(async function (context, event, callback) {
     workflowSid: context.TWILIO_CHAT_TRANSFER_WORKFLOW_SID,
     taskChannel: originalTask.taskChannelUniqueName,
     attributes: JSON.stringify(newAttributes),
+    timeout: timeout || DEFAULT_TIMEOUT,
   });
 
   /*
